@@ -5,8 +5,12 @@ import java.util.*;
 public class Category {
     private List<Book> listBook;
 
-    public Category(List<Book> listBook) {
-        this.listBook = listBook;
+    public Category() {
+        this.listBook = new ArrayList<>();
+    }
+
+    public List<Book> getListBook() {
+        return listBook;
     }
 
     //Câu 9
@@ -70,6 +74,10 @@ public class Category {
         return result;
     }
 
+    public void add(Book book) {
+        this.listBook.add(book);
+    }
+
     public static void main(String[] args) {
         Book b1 = new Magazine("A", 100, 2021, "ABC", 5000, "AAAA");
         Book b2 = new Magazine("B", 100, 2022, "ABC", 5000, "BBBB");
@@ -82,23 +90,23 @@ public class Category {
         Chapter c5 = new Chapter("W", 10);
         Chapter c6 = new Chapter("X", 60);
 
-        List<Chapter> lc1 = new ArrayList<>();
-        lc1.add(c1); lc1.add(c2);
+        Book b4 = new RefBook("C", 121, 2021, "BCD", 5000, "CCCC");
+        Book b5 = new RefBook("E", 200, 2021, "BCD", 5000, "DDDD");
+        Book b6 = new RefBook("F", 300, 2022, "BCD", 5000, "EEEE");
+        b4.addChapter(c1);
+        b4.addChapter(c2);
+        b5.addChapter(c3);
+        b5.addChapter(c4);
+        b6.addChapter(c5);
+        b6.addChapter(c6);
 
-        List<Chapter> lc2 = new ArrayList<>();
-        lc1.add(c3); lc2.add(c4);
-
-        List<Chapter> lc3 = new ArrayList<>();
-        lc3.add(c5); lc3.add(c6);
-
-        Book b4 = new RefBook("C", 121, 2021, "BCD", 5000, "CCCC", lc1);
-        Book b5 = new RefBook("E", 200, 2021, "BCD", 5000, "DDDD", lc2);
-        Book b6 = new RefBook("F", 300, 2022, "BCD", 5000, "EEEE", lc3);
-
-        List<Book> list = new ArrayList<>();
-        list.add(b1); list.add(b2); list.add(b3); list.add(b4); list.add(b5); list.add(b6);
-
-        Category category = new Category(list);
+        Category category = new Category();
+        category.add(b1);
+        category.add(b2);
+        category.add(b3);
+        category.add(b4);
+        category.add(b5);
+        category.add(b6);
 
         //C6
         System.out.println(b1.typeOfBook());

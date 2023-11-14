@@ -1,15 +1,16 @@
 package lab9.task2;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RefBook extends Book{
     private String type;
     private List<Chapter> chapters;
 
-    public RefBook(String title, int page, int year, String author, int price, String type, List<Chapter> chapters) {
+    public RefBook(String title, int page, int year, String author, int price, String type) {
         super(title, page, year, author, price);
         this.type = type;
-        this.chapters = chapters;
+        this.chapters = new ArrayList<>();
     }
     //Câu 6
     @Override
@@ -37,5 +38,9 @@ public class RefBook extends Book{
     @Override
     public String toString() {
         return this.title + " " + this.year;
+    }
+    @Override
+    public void addChapter(Chapter chapter) {
+        this.chapters.add(chapter);
     }
 }

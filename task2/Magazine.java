@@ -33,8 +33,14 @@ public class Magazine extends Book{
     public boolean isMagazineHaveName(String name) {
         return this.getName().equals(name);
     }
+
+    @Override
+    public void addChapter(Chapter chapter) {
+    }
+
     @Override
     public String toString() {
         return this.title + " " + this.year;
     }
+
 }

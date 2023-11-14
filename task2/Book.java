@@ -53,4 +53,6 @@ public abstract class Book {
     public boolean isSameYear(int year) {
         return this.getYear() == year;
     }
+
+    public abstract void addChapter(Chapter chapter);
 }
