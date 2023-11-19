@@ -7,34 +7,26 @@ public class Faculty {
     private String address;
     private List<Course> courses;
 
-    public Faculty(String name, String address, List<Course> courses) {
+    public Faculty(String name, String address) {
         this.name = name;
         this.address = address;
-        this.courses = courses;
+        this.courses = new ArrayList<>();
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getAddress() {
         return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 
     public List<Course> getCourses() {
         return courses;
     }
 
-    public void setCourses(List<Course> courses) {
-        this.courses = courses;
+    public void addCourses(Course course) {
+        this.courses.add(course);
     }
 
     //Câu 1
@@ -83,27 +75,24 @@ public class Faculty {
     }
 
     public static void main(String[] args) {
-        Student s1 = new Student(null, null, 2022);
-        Student s2 = new Student(null, null, 2021);
-        Student s3 = new Student(null, null, 2021);
-        Student s4 = new Student(null, null, 2021);
-        Student s5 = new Student(null, null, 2023);
+        Student s1 = new Student("S01", "A", 2022);
+        Student s2 = new Student("S02", "B", 2021);
+        Student s3 = new Student("S03", "C", 2021);
+        Student s4 = new Student("S04", "D", 2021);
+        Student s5 = new Student("S05", "E", 2023);
 
-        List<Student> ls1 = new ArrayList<>();
-        ls1.add(s1);
-        ls1.add(s2);
-        List<Student> ls2 = new ArrayList<>();
-        ls2.add(s3);
-        ls2.add(s4);
-        ls2.add(s5);
+        Course c1 = new Course("Course1", "DataStructure", "Practical", "D");
+        Course c2 = new Course("Course2", "HowToCodeABeautifulWeb", "Practical", "L");
 
-        Course c1 = new Course(null, null, null, ls1, null);
-        Course c2 = new Course(null, null, null, ls2, null);
-        List<Course> lc = new ArrayList<>();
-        lc.add(c1); lc.add(c2);
+        c1.addStudent(s1); c1.addStudent(s2);
+        c2.addStudent(s3); c2.addStudent(s4); c2.addStudent(s5);
 
-        Faculty f = new Faculty(null, null, lc);
+        Faculty f = new Faculty("IT", "HCMC");
+        f.addCourses(c1);
+        f.addCourses(c2);
 
+        System.out.println(f.getMaxPracticalCourse());
         System.out.println(f.groupStudentsByYear());
+        System.out.println(f.filterCourses("Practical"));
     }
 }
